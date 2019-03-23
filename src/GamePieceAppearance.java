@@ -1,5 +1,5 @@
 
-public class GamePieceAppearance {
+public class GamePieceAppearance extends Color extends Shape  {
 
 	private Color color; 
 	private Shape shape; 
@@ -12,11 +12,11 @@ public class GamePieceAppearance {
 	
 	public Color getColor()
 	{
-		
+		return color; 
 	}
 	
 	public Shape getShape()
 	{
-		
+		return shape; 
 	}
 }

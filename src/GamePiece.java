@@ -1,43 +1,44 @@
+public enum GamePiece {
+	RED_RACER, BLUE_RACER, MAGENTA_RACER, RED_THIMBLE, 
+	BLUE_BOOT, GREEN_BOOT, YELLOW_BOOT;
 
-public class GamePiece {
-
-	public enum gamePiece {
-		RED_RACER, BLUE_RACER, MAGENTA_RACER, RED_THIMBLE, 
-		BLUE_BOOT, GREEN_BOOT, YELLOW_BOOT
-	}
-	
 	private GamePieceAppearance appearance; 
-	private int priority; 
-	
-	private GamePiece (GamePieceAppearance appearance, int priority)
-	{
+	private int priority;
+
+	Shape sh; 
+	Color co; 
+
+	private GamePiece() {
+		return; 
+	}
+
+	private GamePiece (GamePieceAppearance appearance, int priority){
 		this.appearance = appearance;
 		this.priority = priority; 
 	}
-	
-	public Color getColor()
-	{
-		GamePieceAppearance.getColor();
+
+	public Color getColor(){
+		return appearance.getColor();
 	}
-	
-	public Shape getShape()
-	{
-		GamePieceAppearance.getShape();
+
+	public Shape getShape(){
+		return appearance.getShape();
 	}
-	
-	public GamePiece movesFirst(GamePiece a, GamePiece b)
-	{
-		if (a.getPriority < b.getPriority)
+
+	public static GamePiece movesFirst(GamePiece a, GamePiece b){
+		if (a.Priority < b.getPriority())
 		{
-			return b; 
+			return a; 
 		}
 		else 
 		{
-			return a;
+			return b;
 		}
 	}
-	public String toString()
-	{
-		
+	private int getPriority() {
+		// TODO Auto-generated method stub
+		return 0;
 	}
+
+	public abstract String toString();
 }

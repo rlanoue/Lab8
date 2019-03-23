@@ -26,7 +26,7 @@ public enum GamePiece {
 	}
 
 	public static GamePiece movesFirst(GamePiece a, GamePiece b){
-		if (a.Priority < b.getPriority())
+		if (a.getPriority() < b.getPriority())
 		{
 			return a; 
 		}
@@ -35,10 +35,12 @@ public enum GamePiece {
 			return b;
 		}
 	}
+	
 	private int getPriority() {
-		// TODO Auto-generated method stub
-		return 0;
+		return priority; 
 	}
 
-	public abstract String toString();
+	public String toString() {
+		return null; 
+	}
 }

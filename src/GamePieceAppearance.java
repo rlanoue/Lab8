@@ -1,5 +1,5 @@
 
-public class GamePieceAppearance extends Color extends Shape  {
+public class GamePieceAppearance implements Color extends Shape  {
 
 	private Color color; 
 	private Shape shape; 

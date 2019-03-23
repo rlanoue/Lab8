@@ -1,12 +1,7 @@
+public enum Shape {
+	THIMBLE, BOOT, RACECAR;
 
-public class Shape {
-
-	public enum shape {
-		THIMBLE, BOOT, RACECAR
-	}
-	
-	public String toString()
-	{
-		return null;
+	public String toString(){
+		return  null;	//.getShape();
 	}
 }

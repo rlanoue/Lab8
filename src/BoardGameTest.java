@@ -8,7 +8,8 @@ public class BoardGameTest {
 	Shape THIMBLE = Shape.THIMBLE; 
 	Shape GARGOYLE = Shape.RACECAR; 
 	GamePiece HAT = GamePiece.BLUE_BOOT;
-	GamePiece FATCAT = GamePiece.YELLOW_BOOT;
+	GamePiece FATCAT = GamePiece.MAGENTA_RACER;
+	//GamePieceAppearance HELLO = Shape.BOOT; // = GamePieceAppearance.Y
 	//GamePiece KITE = GamePiece.GREEN_BOOT.movesFirst(BOOT, HAT);
 	
 	//GamePiece illuminati = appearance.GREEN, Shape.THIMBLE; 
@@ -25,6 +26,8 @@ public class BoardGameTest {
 		Assert.assertEquals("Incorrect rgb value " + colorTest.name(), 255, colorTest.getB());
 		Assert.assertEquals("Incorrect rgb value " + colorTest.name(), 0, colorTest.getG());
 		Assert.assertEquals("Incorrect rgb value " + colorTest.name(), 0, colorTest.getR());
+		
+		//Assert.assertEquals("Incorrect rgb value " + HAT.name(), 255, HAT.getColor()); 
 	}
 	
 	@Test
@@ -45,21 +48,23 @@ public class BoardGameTest {
 	@Test
 	public void ShapeTest()
 	{
-		Assert.assertEquals("Incorrect shape for " + BOOT.name(), "Boot", Shape.BOOT.toString()); 
-		Assert.assertEquals("Incorrect shape for " + THIMBLE.name(), "Thimble", Shape.THIMBLE.toString()); 
-		Assert.assertEquals("Incorrect shape for " + GARGOYLE.name(), "Race Car", Shape.RACECAR.toString()); 
-		//Assert.assertEquals("Incorrect shape for " + GARGOYLE.name(), "Error", Shape.RACECAR.toString()); TEST the DEFAULT SETTING
+		Assert.assertEquals("Incorrect shape for " + BOOT.name(), "boot", Shape.BOOT.toString()); 
+		Assert.assertEquals("Incorrect shape for " + THIMBLE.name(), "thimble", Shape.THIMBLE.toString()); 
+		Assert.assertEquals("Incorrect shape for " + GARGOYLE.name(), "racecar", Shape.RACECAR.toString()); 
+		//Assert.assertEquals(null, Shape.RACECAR.toString()); //TEST the DEFAULT SETTING
 	}
 	
 	@Test
 	public void getColorTest() {
-		Assert.assertEquals("Incorrect color for gamepiece of " + HAT.name(), "Blue", GamePiece.BLUE_BOOT.);
+		Assert.assertEquals("Incorrect color for gamepiece of " + HAT.name(), Color.BLUE, GamePiece.BLUE_BOOT.getColor()); 
 	}
 	
 	@Test
 	public void getPriorityTest() {
-		Assert.assertEquals("Incorrect priorirt", 0, GamePiece.MAGENTA_RACER.getPriority());
-		Assert.assertEquals("Incorrect priorirt", 1, GamePiece.GREEN_BOOT.movesFirst(FATCAT, HAT));
+		Assert.assertEquals("Incorrect priority", GamePiece.MAGENTA_RACER, GamePiece.movesFirst(GamePiece.MAGENTA_RACER, GamePiece.YELLOW_BOOT));
+		Assert.assertEquals("Incorrect priority", GamePiece.MAGENTA_RACER, GamePiece.movesFirst(GamePiece.YELLOW_BOOT, GamePiece.MAGENTA_RACER));
+		Assert.assertEquals("Incorrect priority", GamePiece.MAGENTA_RACER, GamePiece.movesFirst(GamePiece.MAGENTA_RACER, GamePiece.MAGENTA_RACER));
+		//Assert.assertEquals("Incorrect priority", 1, GamePiece.GREEN_BOOT.movesFirst(FATCAT, HAT));
 	}
 	
 }

@@ -8,9 +8,11 @@ public class BoardGame extends Driver {
 	protected LinkedHashMap<String, Location> playerLocations; 
 
 	//public BoardGame() {}
-
-
-
+	
+	
+	
+	ArrayList<String> playersAtLoc = new ArrayList<String>(); 
+	
 
 
 	public boolean addPlayer(String playerName, String gamePiece, GamePiece initialLocation, Location location)

@@ -1,24 +1,23 @@
 
 public class GamePieceAppearance {
 
-	private Color color3; 
-	private Shape shape3; 
+	private Color color; 
+	private Shape shape; 
 	
-	Color colorTransfer; 
-	Shape shapeTransfer; 
+	//Color colorTransfer; 
+	//Shape shapeTransfer; 
 	
 	public GamePieceAppearance(Color color, Shape shape){
-		this.colorTransfer = color3; 
-		this.shapeTransfer = shape3; 
+		this.color = color; 
+		this.shape = shape; 
 	}
 	
 	public Shape getShape(){
-		return shape3; 
+		return shape; 
 	}
 
 
 	public Color getColor() {
-		// TODO Auto-generated method stub
-		return getColor(); 
+		return color; 
 	}
 }

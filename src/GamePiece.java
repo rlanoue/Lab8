@@ -1,12 +1,17 @@
 public enum GamePiece {
-	RED_RACER, BLUE_RACER, MAGENTA_RACER, RED_THIMBLE, 
-	BLUE_BOOT, GREEN_BOOT, YELLOW_BOOT;
+	RED_RACER (new GamePieceAppearance(Color.GREEN, Shape.BOOT), 0), 
+	BLUE_RACER(new GamePieceAppearance(Color.GREEN, Shape.BOOT), 2),
+	MAGENTA_RACER (new GamePieceAppearance(Color.GREEN, Shape.BOOT), 1), 
+	RED_THIMBLE (new GamePieceAppearance(Color.GREEN, Shape.BOOT), 10), 
+	BLUE_BOOT (new GamePieceAppearance(Color.BLUE, Shape.BOOT), 5),
+	GREEN_BOOT (new GamePieceAppearance(Color.GREEN, Shape.BOOT), 8),
+	YELLOW_BOOT (new GamePieceAppearance(Color.YELLOW, Shape.BOOT), 7);
 
 	private GamePieceAppearance appearance; 
 	private int priority;
 
 	//Shape sh; 
-	Shape shapeeTRansferred; 
+	//Shape shapeeTRansferred; 
 
 	private GamePiece() {
 		return; 
@@ -18,27 +23,16 @@ public enum GamePiece {
 	}
 
 	public Color getColor(){
-		if inputpost = RACER
-				if inputpre switches for colors
-				else if = BOOT
-					if switches for colors
-					else
-						swictches for colors
-						
-		switch(this) {
-		case THIMBLE : return RED;
-		case BOOT : return "Boot";
-		case RACECAR : return "Race Car";  
-		default : return "Error";
+		
 		return appearance.getColor(); 
 	}
 
 	public Shape getShape(){
-		return ((Enum<Shape>) appearance).valueOf(shapeeTRansferred, "BOOT"); 
+		return appearance.getShape();  
 	}
 
 	public static GamePiece movesFirst(GamePiece a, GamePiece b){
-		if (a.getPriority() < b.getPriority())
+		if (a.priority < b.priority)
 		{
 			return a; 
 		}
@@ -47,12 +41,8 @@ public enum GamePiece {
 			return b;
 		}
 	}
-	
-	public int getPriority() {
-		return priority; 
-	}
 
 	public String toString() {
-		return null; 
+		return String.format("%s: a %s %s with priority %d",  name(), appearance.getColor(), appearance.getShape(), priority); 
 	}
 }

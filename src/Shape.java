@@ -7,16 +7,12 @@ public enum Shape {
 	THIMBLE, BOOT, RACECAR;
 
 	/**
-	 * Overriden toString of the enum class made with a switch to return specific of the shape type
+	 * Overriden toString of the enum class with returning the name set to be only lowercase
 	 */
 	@Override
 	public String toString(){
-		switch(this) {
-		case THIMBLE : return "Thimble";
-		case BOOT : return "Boot";
-		case RACECAR : return "Race Car";  
-		default : return "Error";					//NEED TO TEST DEFAULT CASE
-		}
-	}
+		
+		return this.name().toLowerCase(); 
+	
 }
-
+}

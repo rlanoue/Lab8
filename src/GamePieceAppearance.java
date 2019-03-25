@@ -1,22 +1,24 @@
 
-public class GamePieceAppearance implements Color extends Shape  {
+public class GamePieceAppearance {
 
-	private Color color; 
-	private Shape shape; 
+	private Color color3; 
+	private Shape shape3; 
 	
-	public GamePieceAppearance(Color color, Shape shape)
-	{
-		this.color = color; 
-		this.shape = shape; 
+	Color colorTransfer; 
+	Shape shapeTransfer; 
+	
+	public GamePieceAppearance(Color color, Shape shape){
+		this.colorTransfer = color3; 
+		this.shapeTransfer = shape3; 
 	}
 	
-	public Color getColor()
-	{
-		return color; 
+	public Shape getShape(){
+		return shape3; 
 	}
-	
-	public Shape getShape()
-	{
-		return shape; 
+
+
+	public Color getColor() {
+		// TODO Auto-generated method stub
+		return getColor(); 
 	}
 }

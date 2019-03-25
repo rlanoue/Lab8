@@ -1,7 +1,15 @@
+/**
+ * 
+ * An enum of type shapes
+ *
+ */
 public enum Shape {
 	THIMBLE, BOOT, RACECAR;
 
-	//@Override
+	/**
+	 * Overriden toString of the enum class made with a switch to return specific of the shape type
+	 */
+	@Override
 	public String toString(){
 		switch(this) {
 		case THIMBLE : return "Thimble";

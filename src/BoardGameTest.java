@@ -53,7 +53,7 @@ public class BoardGameTest {
 	
 	@Test
 	public void getColorTest() {
-		Assert.assertEquals("Incorrect color for gamepiece of " + HAT.name(), "Blue", GamePiece.BLUE_BOOT.getColor());
+		Assert.assertEquals("Incorrect color for gamepiece of " + HAT.name(), "Blue", GamePiece.BLUE_BOOT.);
 	}
 	
 	@Test

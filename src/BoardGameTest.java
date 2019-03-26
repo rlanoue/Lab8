@@ -1,3 +1,5 @@
+import java.util.Set;
+
 import org.junit.Assert;
 import org.junit.Test;
 
@@ -201,23 +203,45 @@ public class BoardGameTest {
 	public void BoardGameTest()
 	{
 		BoardGame firstGame = new BoardGame(); 		
-		//String player = "Jake"; 
 
 		firstGame.addPlayer("Jordan", GamePiece.RED_THIMBLE, Location.KITCHEN);
-		firstGame.addPlayer("Jake", GamePiece.RED_RACER, Location.KITCHEN); 
-		firstGame.addPlayer("Juan", GamePiece.GREEN_BOOT, Location.KITCHEN); 
+		firstGame.addPlayer("Jake", GamePiece.RED_RACER, Location.CONSERVATORY); 
+		firstGame.addPlayer("Juan", GamePiece.GREEN_BOOT, Location.CONSERVATORY); 
 
 		Assert.assertEquals(firstGame.addPlayer("Harry", GamePiece.MAGENTA_RACER, Location.LIBRARY), true);
 		Assert.assertEquals(firstGame.addPlayer("Perry", GamePiece.BLUE_BOOT, Location.LIBRARY), true);
-		Assert.assertEquals(firstGame.addPlayer("Jerry", GamePiece.YELLOW_BOOT, Location.BALLROOM), true);
-		Assert.assertEquals(firstGame.addPlayer("Larry", GamePiece.YELLOW_BOOT, Location.LIBRARY), false);
 		Assert.assertEquals(firstGame.addPlayer("Perry", GamePiece.RED_THIMBLE, Location.LIBRARY), false);
+		Assert.assertEquals(firstGame.addPlayer("Jerry", GamePiece.YELLOW_BOOT, Location.BALLROOM), true);
 		Assert.assertEquals(firstGame.addPlayer("Jerry", GamePiece.YELLOW_BOOT, Location.LIBRARY), false);
+		Assert.assertEquals(firstGame.addPlayer("Larry", GamePiece.YELLOW_BOOT, Location.LIBRARY), false);
+
 
 		Assert.assertEquals("Incorrect name returned", GamePiece.RED_THIMBLE, firstGame.getPlayerGamePiece("Jordan"));
 		Assert.assertEquals("Incorrect name returned", GamePiece.RED_RACER, firstGame.getPlayerGamePiece("Jake")); 
 		Assert.assertEquals("Incorrect name returned", GamePiece.GREEN_BOOT, firstGame.getPlayerGamePiece("Juan")); 
+
+		//Assert.assertEquals("Incorrect gamePiece returned", GamePiece.GREEN_BOOT.toString(), firstGame.getPlayerWithGamePiece(GamePiece.GREEN_BOOT));
 		
-		Assert.assertEquals("Incorrect gamePiece returned", GamePiece.GREEN_BOOT.toString(), firstGame.getPlayerWithGamePiece(GamePiece.GREEN_BOOT)); 
+		//Assert.assertEquals(firstGame.moveTwoPlayers(moveTwoPlayers, newLocations)); //(GamePiece.MAGENTA_RACER,GamePiece.GREEN_BOOT));
+	
+		Assert.assertEquals(Location.KITCHEN, firstGame.getPlayersLocation("Jordan"));
+		Assert.assertEquals(Location.CONSERVATORY, firstGame.getPlayersLocation("Jake"));
+		Assert.assertEquals(Location.CONSERVATORY, firstGame.getPlayersLocation("Juan"));
+		
+		Set<String> players = firstGame.getPlayers(); 
+		Assert.assertEquals(players, firstGame.getPlayers());
+	
+		Location[] locations2 = new Location[3] ;//{KITCHEN, CONSERVATORY, DINING_ROOM, BALLROOM, STUDY, HALL, LOUNGE, LIBRARY, BILLIARD_ROOM}; 
+		
+		
+		Set<Location> locations = firstGame.getPlayerLocations(); 
+		for(int i = 0; i < locations2.length; i++)
+		{
+			Assert.assertTrue(locations.contains(locations2[i]));
+		}
+		Assert.assertEquals(locations, firstGame.getPlayerLocations());
+		
+		Set<GamePiece> gamePieces = firstGame.getPlayerLocations(); 
+		Assert.assertEquals(gamePieces, firstGame.getPlayerPieces());
 	}
 }

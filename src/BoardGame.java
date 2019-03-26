@@ -31,16 +31,20 @@ public class BoardGame extends Driver {
 	} 
 	
 	public String getPlayerWithGamePiece(GamePiece gamePiece){
-		String RassociatedName = null; 
-		for (int i = 0; i < playerPieces.size(); i++){
-			if (playerPieces.containsValue(gamePiece)){
-				GamePiece associatedName = playerPieces.get(gamePiece); 
-				RassociatedName = associatedName.toString(); 
-				//return RassociatedName; 
+		//String RassociatedName = null; 
+		GamePiece associatedGamePiece = null; 
+		for (String playerName : playerPieces.keySet()){
+			associatedGamePiece = playerPieces.get(playerName); 
+			if (associatedGamePiece == gamePiece)
+			{
+				return playerName; 
+			//	GamePiece associatedName = playerPieces.get(playerName); 
+				//RassociatedName = associatedName.toString(); 
+			//retur
 			}
-			//return RassociatedName; 
+		
 		}
-		return RassociatedName;
+		return null; 	//check end return 
 
 	}
 

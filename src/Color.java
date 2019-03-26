@@ -12,13 +12,6 @@ public enum Color{
 	private int b;	
 
 	/**
-	 * empty constructor
-	 */
-	private Color(){
-		return;				// Wrong Constructor being used
-	}
-
-	/**
 	 * 
 	 * Configured constructor with the private variables
 	 */

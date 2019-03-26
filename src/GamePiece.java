@@ -10,10 +10,6 @@ public enum GamePiece {
 	private GamePieceAppearance appearance; 
 	private int priority;
 
-	private GamePiece() {
-		return; 
-	}
-
 	private GamePiece (GamePieceAppearance appearance, int priority){
 		this.appearance = appearance;
 		this.priority = priority; 

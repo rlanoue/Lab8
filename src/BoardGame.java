@@ -1,6 +1,10 @@
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.LinkedHashMap;
+import java.util.Map;
 import java.util.Set;
+
+import org.junit.Assert;
 
 public class BoardGame extends Driver {
 
@@ -13,7 +17,7 @@ public class BoardGame extends Driver {
 
 
 	public boolean addPlayer(String playerName, GamePiece gamePiece, Location initialLocation){
-		if(playerPieces.containsKey(playerName) || playerPieces.containsValue(gamePiece))
+		if(playerPieces.containsKey(playerName))
 		{
 			return false; 
 		}
@@ -29,22 +33,19 @@ public class BoardGame extends Driver {
 		GamePiece associatedGamePiece = playerPieces.get(playerName); 
 		return associatedGamePiece;  
 	} 
-	
+
 	public String getPlayerWithGamePiece(GamePiece gamePiece){
-		//String RassociatedName = null; 
 		GamePiece associatedGamePiece = null; 
 		for (String playerName : playerPieces.keySet()){
 			associatedGamePiece = playerPieces.get(playerName); 
 			if (associatedGamePiece == gamePiece)
 			{
 				return playerName; 
-			//	GamePiece associatedName = playerPieces.get(playerName); 
-				//RassociatedName = associatedName.toString(); 
-			//retur
+
 			}
-		
+
 		}
-		return null; 	//check end return 
+		return null;
 
 	}
 
@@ -115,10 +116,22 @@ public class BoardGame extends Driver {
 	}
 
 	public Set<Location> getPlayerLocations(){
-		return (Set<Location>) playerLocations.values();  
+		Set<Location> locations = new HashSet<Location>();
+
+		for(Map.Entry<String, Location> entry : playerLocations.entrySet())
+		{
+			locations.add(entry.getValue()); 
+		}
+		return locations;  
 	}
 
 	public Set<GamePiece> getPlayerPieces(){
-		return (Set<GamePiece>) playerPieces.values(); 
+		Set<GamePiece> gamePieces = new HashSet<GamePiece>();
+
+		for(Map.Entry<String, GamePiece> entry : playerPieces.entrySet())
+		{
+			gamePieces.add(entry.getValue()); 
+		}
+		return gamePieces;
 	}
 }

@@ -15,7 +15,7 @@ public enum Color{
 	 * empty constructor
 	 */
 	private Color(){
-		return;// Wrong Constructor being used
+		return;				// Wrong Constructor being used
 	}
 
 	/**

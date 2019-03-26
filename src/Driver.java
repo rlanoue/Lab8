@@ -3,13 +3,15 @@ import java.util.Scanner;
 
 public class Driver {
 
-	final String name = null; 
-	static Scanner input = new Scanner(System.in);
+	//final String name = null; 
+	//static Scanner input = new Scanner(System.in);
 
 	public static void main (String[] args)
 	{
 
-		LinkedList<String> Players = new LinkedList<String>(); 
+		GamePiece Tank = GamePiece.RED_THIMBLE; 
+		
+		/*LinkedList<String> Players = new LinkedList<String>(); 
 
 
 		System.out.println("Please enter your first name with no spaces");
@@ -26,7 +28,7 @@ public class Driver {
 			brake.equals(true); 
 			System.out.println("Made into while and changed boolean");
 			//addPlayer(playerName, gamePiece, intialLocation, Location); 
-		 
+
 
 			if (nextMove.equalsIgnoreCase("[1]")){
 				for (int i = 0; i < Players.size(); i++)
@@ -36,7 +38,7 @@ public class Driver {
 					//if two names match each other
 				}
 				System.out.println("Please enter your first name with no spaces");
-			
+
 				System.out.println(Players);
 				brake.equals(false); 
 				//nextMove = input.nextLine(); 
@@ -68,5 +70,6 @@ public class Driver {
 			}
 
 		}}
-
+		 */
+	}
 }

@@ -12,9 +12,13 @@ public class BoardGame extends Driver {
 	protected LinkedHashMap<String, Location> playerLocations = new LinkedHashMap<String, Location>(); 
 
 	String[] playersMoveTo = new String[10]; 
-
-
-
+	/**
+	 * adds players to the game board
+	 * @param playerName
+	 * @param gamePiece
+	 * @param initialLocation
+	 * @return
+	 */
 
 	public boolean addPlayer(String playerName, GamePiece gamePiece, Location initialLocation){
 		if(playerPieces.containsKey(playerName))
@@ -29,11 +33,21 @@ public class BoardGame extends Driver {
 		}
 	}
 
+	/**
+	 * method that returns the GamePiece of a particular player 
+	 * @param playerName
+	 * @return
+	 */
 	public GamePiece getPlayerGamePiece(String playerName){
 		GamePiece associatedGamePiece = playerPieces.get(playerName); 
 		return associatedGamePiece;  
 	} 
 
+	/**
+	 * finds the player with a specific game piece by calling on keySets of the pieces array
+	 * @param gamePiece
+	 * @return
+	 */
 	public String getPlayerWithGamePiece(GamePiece gamePiece){
 		GamePiece associatedGamePiece = null; 
 		for (String playerName : playerPieces.keySet()){
@@ -46,6 +60,9 @@ public class BoardGame extends Driver {
 	}
 
 	String movePlayer = null;
+	/**
+	 * moves a player to a new location
+	 */
 	public void movePlayer(String playerName, Location newLocation){
 		movePlayer = null; 
 		playerPieces.forEach((key, value) -> {
@@ -55,7 +72,13 @@ public class BoardGame extends Driver {
 			playerLocations.put(movePlayer, newLocation);
 		}); 
 	}
-
+	/**
+	 * moves two players to a new location - one at a time based on their priority called
+	 * by the movesFirst
+	 * @param playerNames
+	 * @param newLocations
+	 * @return
+	 */
 	public String[] moveTwoPlayers (String[] playerNames, Location[] newLocations){
 		String[] moveTwoPlayers = new String[2]; 
 
@@ -80,10 +103,23 @@ public class BoardGame extends Driver {
 		}
 	}
 
+	/**
+	 * calls on the arraylist of locations and then references the player's name
+	 * as a string
+	 * @param player
+	 * @return
+	 */
 	public Location getPlayersLocation(String player){
 		return playerLocations.get(player);
 	}
 
+	/**
+	 * an enhanced for loop that looks at the keysets of the array and then if the 
+	 * given location matches that of the arraylist key at the current cycle enter the if loop
+	 * and then add the players name to the array and then return said array  
+	 * @param loc
+	 * @return
+	 */
 	public ArrayList<String> getPlayersAtLocation (Location loc){
 		ArrayList<String> playersAtLoc = new ArrayList<String>(); 
 
@@ -96,11 +132,16 @@ public class BoardGame extends Driver {
 		}
 		return playersAtLoc; 	
 	}
-
+	/**
+	 * very similar to getPlayesrAtLocation but uses game pieces instead of the
+	 * string of a player name 
+	 * @param loc
+	 * @return
+	 */
 	public ArrayList<GamePiece> getGamePiecesAtLocation(Location loc){
 		ArrayList<GamePiece> piecesAtLoc = new ArrayList<GamePiece>();
 		for (String playerName : playerLocations.keySet()){
-			
+
 			if (playerLocations.get(playerName).equals(loc)){
 				piecesAtLoc.add(playerPieces.get(playerName)); 
 			}
@@ -108,10 +149,18 @@ public class BoardGame extends Driver {
 		return piecesAtLoc;
 	}
 
+	/**
+	 * returns all the keys in the playerpieces array from the hashmap
+	 * @return
+	 */
 	public Set<String> getPlayers(){
 		return playerPieces.keySet(); 
 	}
 
+	/**
+	 * returns all the player locations
+	 * @return
+	 */
 	public Set<Location> getPlayerLocations(){
 		Set<Location> locations = new HashSet<Location>();
 
@@ -121,7 +170,10 @@ public class BoardGame extends Driver {
 		}
 		return locations;  
 	}
-
+/**
+ * returns all the player pieces
+ * @return
+ */
 	public Set<GamePiece> getPlayerPieces(){
 		Set<GamePiece> gamePieces = new HashSet<GamePiece>();
 

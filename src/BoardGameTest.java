@@ -258,6 +258,8 @@ public class BoardGameTest {
 
 	}
 
+	//tests the sets methods in board game and basically adds player's locations to an array to then
+	//reference compare the locations of before and after the change
 	@Test
 	public void setsLocationTest() {
 
@@ -291,7 +293,7 @@ public class BoardGameTest {
 		Assert.assertEquals(gamepieces2, firstGame.getPlayerPieces());
 
 	}
-
+//Tests the moving location of one and two players 
 	@Test
 	public void movePlayerandTwoPlayers() {
 		BoardGame firstGame = new BoardGame(); 
@@ -316,6 +318,7 @@ public class BoardGameTest {
 
 	}
 
+	//test that shows both the players based on a specific location by name and by gamepiece
 	@Test
 	public void getPlayersAtLocationTest() {
 		BoardGame firstGame = new BoardGame(); 

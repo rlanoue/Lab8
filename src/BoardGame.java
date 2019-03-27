@@ -13,7 +13,7 @@ public class BoardGame extends Driver {
 
 	String[] playersMoveTo = new String[10]; 
 
-	ArrayList<String> playersAtLoc = new ArrayList<String>(); 
+
 
 
 	public boolean addPlayer(String playerName, GamePiece gamePiece, Location initialLocation){
@@ -89,8 +89,10 @@ public class BoardGame extends Driver {
 	}
 
 	public ArrayList<String> getPlayersAtLocation (Location loc){
+		ArrayList<String> playersAtLoc = new ArrayList<String>(); 
+		
 		for (int i = 0; i < playerLocations.size(); i++){
-			if (playerLocations.containsValue(loc)){
+			if (playerLocations.containsKey(loc)){
 				GamePiece associatedLocation = playerPieces.get(loc); 
 				playersAtLoc.add(associatedLocation.toString()); 
 				return playersAtLoc; 
@@ -102,6 +104,7 @@ public class BoardGame extends Driver {
 	GamePiece associatedLocation; 
 	public ArrayList<GamePiece> getGamePiecesAtLocation(Location loc){
 		ArrayList<GamePiece> piecesAtLoc = new ArrayList<GamePiece>();
+		
 		Location newest = null; 
 		for (int i = 0; i < playerLocations.size(); i++){
 			if (playerLocations.containsKey(loc)){

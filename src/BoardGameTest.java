@@ -1,3 +1,4 @@
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashSet;
 import java.util.List;
@@ -137,6 +138,8 @@ public class BoardGameTest {
 
 		//Tests Fat
 		Assert.assertEquals("Incorrect color for gamepiece of " + Fat.name(), Color.BLUE, Fat.getColor());
+		
+		//assertEquals("FRAME", Color.enum.name());
 	}
 
 	@Test
@@ -220,25 +223,24 @@ public class BoardGameTest {
 		//Assert.assertEquals(firstGame.addPlayer("Larry", GamePiece.YELLOW_BOOT, Location.LIBRARY), false);
 
 
-		Assert.assertEquals("Incorrect name returned", GamePiece.RED_THIMBLE, firstGame.getPlayerGamePiece("Jordan"));
-		Assert.assertEquals("Incorrect name returned", GamePiece.RED_RACER, firstGame.getPlayerGamePiece("Jake")); 
-		Assert.assertEquals("Incorrect name returned", GamePiece.GREEN_BOOT, firstGame.getPlayerGamePiece("Juan")); 
+		Assert.assertEquals(GamePiece.RED_THIMBLE, firstGame.getPlayerGamePiece("Jordan"));
+		Assert.assertEquals(GamePiece.RED_RACER, firstGame.getPlayerGamePiece("Jake")); 
+		Assert.assertEquals(GamePiece.GREEN_BOOT, firstGame.getPlayerGamePiece("Juan")); 
 
 		Assert.assertEquals("Incorrect gamePiece returned", GamePiece.GREEN_BOOT, firstGame.getPlayerGamePiece("Juan"));
-		
+
 		Assert.assertEquals("Jordan",  firstGame.getPlayerWithGamePiece(GamePiece.RED_THIMBLE));
 		Assert.assertEquals(null, firstGame.getPlayerWithGamePiece(GamePiece.BLUE_RACER));
-		
-		//Assert.assertEquals(firstGame.moveTwoPlayers(moveTwoPlayers, newLocations)); //(GamePiece.MAGENTA_RACER,GamePiece.GREEN_BOOT));
+
 
 		Assert.assertEquals(Location.KITCHEN, firstGame.getPlayersLocation("Jordan"));
 		Assert.assertEquals(Location.CONSERVATORY, firstGame.getPlayersLocation("Jake"));
 		Assert.assertEquals(Location.CONSERVATORY, firstGame.getPlayersLocation("Juan"));
 
 	}
-	
+
 	@Test
-	public void setLocationTest() {
+	public void setsLocationTest() {
 
 		BoardGame firstGame = new BoardGame();
 
@@ -246,19 +248,19 @@ public class BoardGameTest {
 		Assert.assertEquals(players, firstGame.getPlayers());
 		firstGame.addPlayer("Barbie", GamePiece.MAGENTA_RACER, Location.CONSERVATORY); 
 		firstGame.addPlayer("Ken", GamePiece.YELLOW_BOOT, Location.HALL); 
-		
+
 		Location[] locationsArray = {Location.CONSERVATORY, Location.HALL};
 		List<Location> locations1 = Arrays.stream(locationsArray).collect(Collectors.toList()); 
 		Set<Location> locations2 = new HashSet<Location>(locations1);  
-	
+
 		Assert.assertEquals(locations2, firstGame.getPlayerLocations());
 	}
-	
+
 	@Test
 	public void setGamePieceTest() {
 
 		BoardGame firstGame = new BoardGame();
-		
+
 		firstGame.addPlayer("Scooby", GamePiece.BLUE_RACER, Location.KITCHEN); 
 		firstGame.addPlayer("Shaggy", GamePiece.RED_RACER, Location.KITCHEN); 
 		firstGame.addPlayer("Velma", GamePiece.MAGENTA_RACER, Location.BILLIARD_ROOM); 
@@ -270,30 +272,49 @@ public class BoardGameTest {
 		Assert.assertEquals(gamepieces2, firstGame.getPlayerPieces());
 
 	}
-	
+
 	@Test
-	public void movePlayer() {
+	public void movePlayerandTwoPlayers() {
 		BoardGame firstGame = new BoardGame(); 
-		
+
 		firstGame.addPlayer("Fred-Flintstone", GamePiece.BLUE_BOOT, Location.LOUNGE); //5
 		firstGame.addPlayer("Wilma", GamePiece.GREEN_BOOT, Location.KITCHEN); //8
 		firstGame.addPlayer("Pebbles", GamePiece.YELLOW_BOOT, Location.HALL); //7
-		
+
 		firstGame.movePlayer("Fred-Flintstone", Location.BILLIARD_ROOM); 
-		
+
 		Assert.assertEquals(Location.BILLIARD_ROOM, firstGame.getPlayersLocation("Fred-Flintstone"));
-		
+
 		String[] playersToMoveTest1 = {"Wilma", "Pebbles"}; 
 		Location[] newLocations = {Location.KITCHEN, Location.HALL}; 
 		String[] playersToMoveTest2 = {"Fred-Flintstone", "Wilma"}; 
-		
+
 		String[] movedPlayersT1 = {"Pebbles", "Wilma"}; 
 		String[] movedPlayersT2 = {"Fred-Flintstone", "Wilma"}; 
-		
+
 		Assert.assertEquals(movedPlayersT1, firstGame.moveTwoPlayers(playersToMoveTest1, newLocations));
 		Assert.assertEquals(movedPlayersT2, firstGame.moveTwoPlayers(playersToMoveTest2, newLocations));
-		
-	}
 
 	}
-	
+
+	@Test
+	public void getPlayersAtLocationTest() {
+		BoardGame firstGame = new BoardGame(); 
+
+		firstGame.addPlayer("Arthur", GamePiece.BLUE_RACER, Location.BALLROOM);
+		firstGame.addPlayer("Francine", GamePiece.RED_RACER, Location.BILLIARD_ROOM); 
+		firstGame.addPlayer("Buster", GamePiece.MAGENTA_RACER, Location.CONSERVATORY);
+		firstGame.addPlayer("Muffy", GamePiece.GREEN_BOOT, Location.BALLROOM); 
+
+		ArrayList<String> playersAtCertain = new ArrayList<String>();
+		playersAtCertain.add("Arthur"); 
+		playersAtCertain.add("Muffy"); 
+
+		//Assert.assertEquals(playersAtCertain, firstGame.getPlayersAtLocation(Location.BALLROOM));
+		
+	//	Assert.assertEquals(playersAtCertain, firstGame.getGamePiecesAtLocation(Location.BALLROOM));
+		//Location[] playersArray = {Location.BALLROOM, Location.BILLIARD_ROOM, Location.CONSERVATORY};
+		//playersAtCertain.addAll(Arrays.asList(playersArray.toString())); 
+	}
+
+}

@@ -112,7 +112,10 @@ public class BoardGameTest {
 		//Tests Cat
 		Assert.assertEquals("Incorrect shape for " + Cat.name(), "thimble", Cat.toString());
 	}
-
+	/**
+	 * Tests implements of the GamePiece and GamePiece appearance classes
+	 * such as the getColor methods.  
+	 */
 	@Test
 	public void getColorTest() {
 		getColor = GamePiece.BLUE_BOOT; 
@@ -138,10 +141,13 @@ public class BoardGameTest {
 
 		//Tests Fat
 		Assert.assertEquals("Incorrect color for gamepiece of " + Fat.name(), Color.BLUE, Fat.getColor());
-		
-		//assertEquals("FRAME", Color.enum.name());
+
 	}
 
+	/**
+	 * Tests implements of the GamePiece and GamePiece appearance classes
+	 * such as the getShape methods.  
+	 */
 	@Test
 	public void getShapeTest() {
 		getShape = GamePiece.BLUE_BOOT; 
@@ -170,6 +176,10 @@ public class BoardGameTest {
 
 	}
 
+	/**
+	 * tests the toString method of the gamePiece class that shows the color
+	 * the shape, and the priority
+	 */
 	@Test
 	public void gamePieceToString() {
 		toString = GamePiece.BLUE_BOOT; 
@@ -193,7 +203,10 @@ public class BoardGameTest {
 		toString = GamePiece.YELLOW_BOOT; 
 		Assert.assertEquals("Incorrect toString response of " + toString.name(), "YELLOW_BOOT: a YELLOW boot with priority 7",  toString.toString());  
 	}
-
+/**
+ * tests the move first method by using the priority assigned at the top
+ * of the game piece class
+ */
 	@Test
 	public void movesFirstTest() {
 
@@ -206,6 +219,14 @@ public class BoardGameTest {
 		Assert.assertEquals("Incorrect priority", Fat.BLUE_BOOT, GamePiece.movesFirst(Fat, Hat));
 	}
 
+	/**
+	 * adds players to the game and then tests to make sure that there are no
+	 * players that have the same name or game piece. does not return false if 
+	 * two players are at the same location, as coded
+	 * also tests the return of the player's game piece
+	 * and tests the name returned with an association of a gamepiece
+	 *  
+	 */
 	@Test
 	public void BoardGameTest()
 	{
@@ -220,8 +241,6 @@ public class BoardGameTest {
 		Assert.assertEquals(firstGame.addPlayer("Perry", GamePiece.RED_THIMBLE, Location.LIBRARY), false);
 		Assert.assertEquals(firstGame.addPlayer("Jerry", GamePiece.YELLOW_BOOT, Location.BALLROOM), true);
 		Assert.assertEquals(firstGame.addPlayer("Jerry", GamePiece.YELLOW_BOOT, Location.LIBRARY), false);
-		//Assert.assertEquals(firstGame.addPlayer("Larry", GamePiece.YELLOW_BOOT, Location.LIBRARY), false);
-
 
 		Assert.assertEquals(GamePiece.RED_THIMBLE, firstGame.getPlayerGamePiece("Jordan"));
 		Assert.assertEquals(GamePiece.RED_RACER, firstGame.getPlayerGamePiece("Jake")); 
@@ -310,11 +329,12 @@ public class BoardGameTest {
 		playersAtCertain.add("Arthur"); 
 		playersAtCertain.add("Muffy"); 
 
-		//Assert.assertEquals(playersAtCertain, firstGame.getPlayersAtLocation(Location.BALLROOM));
+		Assert.assertEquals(playersAtCertain, firstGame.getPlayersAtLocation(Location.BALLROOM));
 		
-	//	Assert.assertEquals(playersAtCertain, firstGame.getGamePiecesAtLocation(Location.BALLROOM));
-		//Location[] playersArray = {Location.BALLROOM, Location.BILLIARD_ROOM, Location.CONSERVATORY};
-		//playersAtCertain.addAll(Arrays.asList(playersArray.toString())); 
+		ArrayList<GamePiece> piecesAtCertain = new ArrayList<GamePiece>(); 
+		piecesAtCertain.add(GamePiece.BLUE_RACER); 
+		piecesAtCertain.add(GamePiece.GREEN_BOOT); 
+		
+		Assert.assertEquals(piecesAtCertain, firstGame.getGamePiecesAtLocation(Location.BALLROOM));
 	}
-
 }

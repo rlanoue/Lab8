@@ -38,15 +38,11 @@ public class BoardGame extends Driver {
 		GamePiece associatedGamePiece = null; 
 		for (String playerName : playerPieces.keySet()){
 			associatedGamePiece = playerPieces.get(playerName); 
-			if (associatedGamePiece == gamePiece)
-			{
-				return playerName; 
-
+			if (associatedGamePiece == gamePiece){
+				return playerName;
 			}
-
 		}
 		return null;
-
 	}
 
 	String movePlayer = null;
@@ -90,25 +86,23 @@ public class BoardGame extends Driver {
 
 	public ArrayList<String> getPlayersAtLocation (Location loc){
 		ArrayList<String> playersAtLoc = new ArrayList<String>(); 
-		
-		for (int i = 0; i < playerLocations.size(); i++){
-			if (playerLocations.containsKey(loc)){
-				GamePiece associatedLocation = playerPieces.get(loc); 
-				playersAtLoc.add(associatedLocation.toString()); 
-				return playersAtLoc; 
+
+		for (String location : playerLocations.keySet()){
+			if (playerLocations.get(location).equals(loc)){
+				String returned; 
+				returned = location; 
+				playersAtLoc.add(returned);  
 			}
 		}
 		return playersAtLoc; 	
 	}
 
-	GamePiece associatedLocation; 
 	public ArrayList<GamePiece> getGamePiecesAtLocation(Location loc){
 		ArrayList<GamePiece> piecesAtLoc = new ArrayList<GamePiece>();
-		
-		Location newest = null; 
-		for (int i = 0; i < playerLocations.size(); i++){
-			if (playerLocations.containsKey(loc)){
-				piecesAtLoc.add(playerPieces.get(newest)); 
+		for (String playerName : playerLocations.keySet()){
+			
+			if (playerLocations.get(playerName).equals(loc)){
+				piecesAtLoc.add(playerPieces.get(playerName)); 
 			}
 		}
 		return piecesAtLoc;
